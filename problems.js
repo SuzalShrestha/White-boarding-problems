@@ -185,3 +185,231 @@ let obj={};
     return obj;
 
 }
+let twoDiff=(arr)=>{
+    let result=[];
+    if(arr.length===0) return [];
+    for(let item of arr){
+        if(arr.includes(item+2)){  
+            result.push([arr.indexOf(item),arr.indexOf(item+2)]);
+        }
+        if(arr.includes(item-2)){
+            result.push([arr.indexOf(item),arr.indexOf(item-2)]);
+        }
+    }
+    return result;
+}
+let arrayDiff=(arr1,arr2)=>{
+    let result=[];
+    for(let item of arr1){
+        if(!arr2.includes(item)){
+            result.push(item);
+        }
+    }
+    console.log(result);
+}
+let valueCounter=(obj,val)=>{
+    if(typeof obj!=='object'){
+        return 0;
+    }
+    let count=0;
+    for(let key in obj){
+        if(obj[key]===val){
+            count++;
+        }
+    }
+    return count;
+}
+let elementCount=(arr)=>{
+    let obj={};
+    for(let item of arr){
+        if(obj[item]){
+            obj[item]++;
+        }else{
+            obj[item]=1;
+        }
+    }
+    return obj;
+}
+let nextTwoPrimes=(num)=>{
+    let arr=[];
+    let i=num+1;
+    while(arr.length<2){
+        if(isPrime(i)){
+            arr.push(i);
+        }
+        i++;
+    }
+    return arr;
+}
+let pairProduct=(arr,num)=>{
+    let result=[];
+    for(let i=0;i<arr.length;i++){
+        for(let j=i+1;j<arr.length;j++){
+            if(arr[i]*arr[j]===num){
+                result.push(i,j);
+            }
+        }
+    }
+    return result;
+}
+let twoDimensionalSize=(arr)=>{
+    let length=0;
+    for(let item of arr){
+        length+=item.length;
+    }
+    return length;
+}
+let longWordCount=(string)=>{
+    let arr=string.split(' ');
+    let count=0;
+    for(let item of arr){
+        if(item.length>7){
+            count++;
+        }
+    }
+    return count;
+}
+
+
+let factorial=(num)=>{
+    if(num===0) return 1;
+    if(num===1) return 1;
+    return num*factorial(num-1);
+}
+let lcm=(num1,num2)=>{
+    let max=Math.max(num1,num2);
+    let min=Math.min(num1,num2);
+    for(let i=1;i<=min;i++){
+        if(max*i%min===0){
+            return max*i;
+        }
+    }
+}
+let hipsterfyWord=(string)=>{
+    let arr=string.split('');
+    let vowels="AEIOUaeiou";
+    for(let i=arr.length-1;i>=0;i--){
+        if(vowels.includes(arr[i])){
+            arr.splice(i,1);
+            return arr.join('');
+        }
+    }
+    return arr.join('');
+}
+let hipsterfySentence=(string)=>{
+    let arr=string.split(' ');
+    let result=[];
+    for(let item of arr){
+        result.push(hipsterfyWord(item));
+    }
+    return result.join(' ');
+}
+let objectToString=(obj)=>{
+    let result=[];
+    for(let key in obj){
+        for(let i=0;i<obj[key];i++){
+            result.push(key);
+        }
+    }
+    return result.join('');
+
+}
+let shortestWord=(sentence)=>{
+    let arr=sentence.split(' ');
+    let min=arr[0];
+    for(let item of arr){
+        if(item.length<min.length){
+            min=item;
+        }
+    }
+    return min;
+}
+let greatestCommonFactor=(num1,num2)=>{
+    let max=Math.max(num1,num2);
+    let min=Math.min(num1,num2);
+    for(let i=min;i>=1;i--){
+        if(max%i===0&&min%i===0){
+            return i;
+        }
+    }
+}
+let isPassing=(assessments)=>{
+    let total=0;
+    for(let item of assessments){
+        total+=item.score;
+    }
+    return total/assessments.length>=70;
+}
+let valueConcat=(array,obj)=>{
+    let result=[];
+    for(let item of array){
+        if(obj[item]){
+            result.push(item+obj[item]);
+        }else{
+            result.push(item);
+        }
+    }
+    return result;
+}
+let threeInARow=(arr)=>{
+    for(let i=0;i<arr.length-2;i++){
+        if(arr[i]===arr[i+1]&&arr[i]===arr[i+2]){
+            return true;
+        }
+    }
+    return false;
+}
+let variableNameify=(words)=>{
+    let result=[];
+    for(let item of words){
+        result.push(item.toLowerCase());
+    }
+    for(let i=1;i<result.length;i++){
+        result[i]=result[i].charAt(0).toUpperCase()+result[i].slice(1);
+    }
+    return result.join('');
+}
+let threeIncreasing=(arr)=>{
+    for(let i=0;i<arr.length-2;i++){
+        if(arr[i]+1===arr[i+1]&&arr[i]+2===arr[i+2]){
+            return true;
+        }
+    }
+    return false;
+}
+let reverse2D=(arr)=>{
+    let result=[];
+    for(let item of arr){
+        result.unshift(item.reverse().join(''));
+    }
+    return result.join('');
+}
+let reverb=(string)=>{
+    let vowels="AEIOUaeiou";
+    for(let i=string.length-1;i>=0;i--){   
+        if(vowels.includes(string[i])){
+            return string+string.slice(i);
+        }
+    }
+    return string;
+}
+let countRepeats=(string)=>{
+    let arr=string.split('');
+    let obj=countInnerElement(arr);
+    let count=0;
+    for(let key in obj){
+        if(obj[key]>1){
+            count++;
+        }
+    }
+    return count;
+}
+let pairsToString=(arr)=>{
+    let result=[];
+    for(let item of arr){
+        for(let i=0;i<item[1];i++){
+            result.push(item[0]);
+        }
+    }
+    return result.join('');
+}
