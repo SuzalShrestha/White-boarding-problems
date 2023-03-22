@@ -413,3 +413,93 @@ let pairsToString=(arr)=>{
     }
     return result.join('');
 }
+let countAdjacentSums=(arr,num)=>{
+    let count=0;
+    for(let i=0;i<arr.length-1;i++){
+        if(arr[i]+arr[i+1]===num){
+            count++;
+        }
+    }
+    return count;
+}
+let signFlipCount=(arr)=>{
+    let count=0;
+    for(let i=0;i<arr.length-1;i++){
+        if(arr[i]*arr[i+1]<0){
+            count++;
+        }
+    }
+    console.log(c) ;
+}
+let powerSequence=(base,length)=>{
+    let result=[base];
+    for(let i=0;i<length-1;i++){
+        result.push(result[result.length-1]*base);
+    }
+    return result;
+}
+let collapseString=(string)=>{
+    let result=[];
+    for(let i=0;i<string.length;i++){
+        if(string[i]===string[i+1]){
+            continue;
+        }
+        result.push(string[i]);
+    }
+    return result.join('');
+}
+let oddWordsOut=(string)=>{
+    let arr=string.split(' ');
+    let result=[];
+    for(let item of arr){
+        if(item.length%2===0){
+            result.push(item);
+        }
+    }
+    return(result.join(' '));
+}
+let mindPsAndQs=(string)=>{
+    let psAndQs='pPqQ';
+    let longestStreak=0;
+    let currentStreak=0;
+    for(let item of string){
+        if(psAndQs.includes(item)) currentStreak++;
+        else currentStreak=0;
+        if(currentStreak>longestStreak) longestStreak=currentStreak;
+        
+    }
+    return longestStreak;
+}
+let commonFactors=(num1,num2)=>{
+    let max=Math.max(num1,num2);
+    let min=Math.min(num1,num2);
+    let result=[];
+    for(let i=1;i<=min;i++){
+        if(max%i===0&&min%i===0){
+            result.push(i);
+        }
+    }
+    return result;
+}
+let commonPrimeFactors=(num1,num2)=>{
+    let max=Math.max(num1,num2);
+    let min=Math.min(num1,num2);
+    let result=[];
+    for(let i=2;i<=min;i++){
+        if(isPrime(i)){
+            if(max%i===0&&min%i===0){
+                result.push(i);
+            }
+        }
+       
+    }
+   return result;
+}
+let splitHalfArray=(arr)=>{
+    let mid=Math.floor(arr.length/2);
+    if(arr.length%2!==0){
+        arr.splice(mid,1);
+    }
+    return [arr.slice(0,mid),arr.slice(mid)];
+    
+}
